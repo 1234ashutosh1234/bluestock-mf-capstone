@@ -1,0 +1,6 @@
+amfi_code,fund_house,scheme_name,category,sub_category,plan,launch_date,benchmark,expense_ratio_pct,exit_load_pct,fund_manager,risk_category,sebi_category_code
+125497,HDFC Mutual Fund,HDFC Top 100 Fund,Equity,Large Cap,Direct,1996-10-11,NIFTY 100,1.05,1.00,Chirag Setalvad,High,EC01
+119551,SBI Mutual Fund,SBI Bluechip Fund,Equity,Large Cap,Direct,2006-02-14,NIFTY 100,0.95,1.00,R Srinivasan,High,EC01
+120503,ICICI Prudential Mutual Fund,ICICI Prudential Bluechip Fund,Equity,Large Cap,Direct,2008-05-23,NIFTY 100,1.02,1.00,Sankaran Naren,High,EC01
+118632,Nippon India Mutual Fund,Nippon India Large Cap Fund,Equity,Large Cap,Direct,2007-08-08,NIFTY 100,1.10,1.00,Sailesh Raj Bhan,High,EC01
+120841,Kotak Mutual Fund,Kotak Bluechip Fund,Equity,Large Cap,Direct,2010-01-01,NIFTY 100,1.00,1.00,Harsha Upadhyaya,High,EC01

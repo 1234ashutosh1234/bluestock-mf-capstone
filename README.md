@@ -8,6 +8,10 @@ The project fetches real NAV data from mfapi.in, processes and stores it in SQLi
 
 ---
 
+## Dashboard Preview
+
+![Dashboard](reports/screenshots/dashboard.png)
+
 ## Features
 
 - Real Mutual Fund NAV Data Integration

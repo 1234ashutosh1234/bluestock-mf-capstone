@@ -2,64 +2,52 @@ import sqlite3
 import pandas as pd
 import numpy as np
 
-conn = sqlite3.connect(
-    "data/db/bluestock_mf.db"
-)
+conn = sqlite3.connect("data/db/bluestock_mf.db")
 
 df = pd.read_sql(
-    "SELECT * FROM nav_history",
+    "SELECT amfi_code, date, nav FROM nav_history",
     conn
 )
 
-df["date"] = pd.to_datetime(
-    df["date"],
-    dayfirst=True,
-    errors="coerce"
-)
+# Convert date
+df["date"] = pd.to_datetime(df["date"], dayfirst=True, errors="coerce")
 
-print("Missing dates:", df["date"].isna().sum())
+# Remove bad rows
+df = df.dropna(subset=["date"])
+df = df[df["nav"] > 0]
 
-df = df.sort_values(
-    ["amfi_code", "date"]
-)
+risk_data = []
 
-# Daily Returns
-df["daily_return"] = (
-    df.groupby("amfi_code")["nav"]
-    .pct_change()
-)
+for code in df["amfi_code"].unique():
 
-risk_report = []
+    fund = df[df["amfi_code"] == code].copy()
 
-for fund in df["amfi_code"].unique():
+    fund = fund.sort_values("date")
 
-    temp = df[
-        df["amfi_code"] == fund
-    ].copy()
+    fund["daily_return"] = fund["nav"].pct_change()
 
-    temp = temp.dropna()
+    fund = fund.dropna()
 
-    volatility = (
-        temp["daily_return"]
-        .std()
-        * np.sqrt(252)
+    if len(fund) < 2:
+        volatility = 0
+        sharpe = 0
+    else:
+        volatility = fund["daily_return"].std()
+
+        if volatility == 0 or np.isnan(volatility):
+            sharpe = 0
+        else:
+            sharpe = (
+                fund["daily_return"].mean()
+                / volatility
+            )
+
+    risk_data.append(
+        [code, volatility, sharpe]
     )
 
-    sharpe = (
-        temp["daily_return"]
-        .mean()
-        /
-        temp["daily_return"].std()
-    ) * np.sqrt(252)
-
-    risk_report.append([
-        fund,
-        volatility,
-        sharpe
-    ])
-
 risk_df = pd.DataFrame(
-    risk_report,
+    risk_data,
     columns=[
         "amfi_code",
         "volatility",
@@ -74,8 +62,6 @@ risk_df.to_csv(
     index=False
 )
 
-print(
-    "\nRisk report saved."
-)
+print("\nRisk report saved.")
 
 conn.close()

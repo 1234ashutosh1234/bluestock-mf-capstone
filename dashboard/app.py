@@ -1,9 +1,26 @@
 import streamlit as st
 import pandas as pd
 
-# ------------------------
+# -----------------------------------
 # PAGE CONFIG
-# ------------------------
+# -----------------------------------
+
+st.sidebar.title("Navigation")
+
+st.sidebar.info("""
+Bluestock MF Analytics
+
+Author:
+Ashutosh Raj
+
+Technology:
+Python
+Pandas
+SQLite
+Streamlit
+MFAPI
+""")
+
 
 st.set_page_config(
     page_title="Mutual Fund Analytics Dashboard",
@@ -11,48 +28,35 @@ st.set_page_config(
     layout="wide"
 )
 
-# ------------------------
+# -----------------------------------
 # LOAD DATA
-# ------------------------
+# -----------------------------------
 
-df = pd.read_csv(
-    "data/processed/dashboard_summary_final.csv"
-)
+df = pd.read_csv("data/processed/dashboard_summary_final.csv")
+
 
 # Remove invalid rows
-df = df.dropna(subset=["return_pct"])
+dashboard_df = df.dropna(subset=["return_pct"])
 
-# ------------------------
+# -----------------------------------
 # TITLE
-# ------------------------
+# -----------------------------------
 
 st.title("📈 Mutual Fund Analytics Dashboard")
 
 st.markdown("""
-### Project Overview
+### Real Mutual Fund Analytics using MFAPI Data
 
-This dashboard analyzes real Mutual Fund NAV data fetched from **mfapi.in**.
+This dashboard analyzes real NAV data fetched from mfapi.in.
 
-Metrics Included:
-- Fund Returns (%)
-- Volatility
-- Sharpe Ratio
-- Top Performing Fund
-- Risk Analysis
-
-Developed using:
-**Python, Pandas, SQLite, Streamlit, Matplotlib**
+---
 """)
 
-st.divider()
+# -----------------------------------
+# KPI SECTION
+# -----------------------------------
 
-# ------------------------
-# KPI CARDS
-# ------------------------
-
-best_fund = df.loc[df["return_pct"].idxmax()]
-
-col1, col2, col3, col4 = st.columns(4)
+col1, col2, col3 = st.columns(3)
 
 col1.metric(
     "Total Funds",
@@ -61,147 +65,118 @@ col1.metric(
 
 col2.metric(
     "Best Return %",
-    f"{df['return_pct'].max():.2f}"
+    round(df["return_pct"].max(), 2)
 )
 
 col3.metric(
-    "Best Sharpe",
-    f"{df['sharpe_ratio'].max():.2f}"
+    "Best Sharpe Ratio",
+    round(df["sharpe_ratio"].max(), 2)
 )
 
-col4.metric(
-    "Top Fund",
-    best_fund["scheme_name"]
-)
+st.markdown("---")
 
-st.divider()
+# -----------------------------------
+# FUND TABLE
+# -----------------------------------
 
-# ------------------------
-# DATA TABLE
-# ------------------------
-
-st.subheader("📋 Fund Performance Summary")
-
-display_df = df[
-    [
-        "scheme_name",
-        "return_pct",
-        "volatility",
-        "sharpe_ratio"
-    ]
-].copy()
-
-display_df.columns = [
-    "Fund Name",
-    "Return %",
-    "Volatility",
-    "Sharpe Ratio"
-]
+st.subheader("📋 Fund Performance Table")
 
 st.dataframe(
-    display_df,
+    df,
     use_container_width=True
 )
 
-st.divider()
-
-# ------------------------
+# -----------------------------------
 # TOP FUND
-# ------------------------
+# -----------------------------------
+
+st.markdown("---")
 
 st.subheader("🏆 Top Performing Fund")
 
-col1, col2, col3 = st.columns(3)
-
-col1.metric(
-    "Fund Name",
-    best_fund["scheme_name"]
-)
-
-col2.metric(
-    "Return %",
-    f"{best_fund['return_pct']:.2f}"
-)
-
-col3.metric(
-    "Sharpe Ratio",
-    f"{best_fund['sharpe_ratio']:.2f}"
-)
-
-st.divider()
-
-# ------------------------
-# CHARTS
-# ------------------------
+best = df.loc[
+    df["return_pct"].idxmax()
+]
 
 col1, col2 = st.columns(2)
 
 with col1:
-
-    st.subheader("📊 Fund Returns (%)")
-
-    chart_df = df.set_index(
-        "scheme_name"
-    )["return_pct"]
-
-    st.bar_chart(chart_df)
+    st.success(
+    f"🏆 {best['scheme_name']}"
+)
 
 with col2:
+    st.info(
+    f"Return: {best['return_pct']:.2f}%"
+)
 
-    st.subheader("⚖️ Sharpe Ratio")
+# -----------------------------------
+# RETURN CHART
+# -----------------------------------
 
-    chart_df = df.set_index(
-        "scheme_name"
-    )["sharpe_ratio"]
+st.markdown("---")
 
-    st.bar_chart(chart_df)
+st.subheader("📈 Return Comparison")
 
-st.divider()
-
-# ------------------------
-# RANKING TABLE
-# ------------------------
-
-st.subheader("🥇 Fund Ranking")
-
-ranking = df[
-    [
-        "scheme_name",
-        "return_pct",
-        "sharpe_ratio"
-    ]
-].sort_values(
-    by="return_pct",
+chart_df = df.sort_values(
+    "return_pct",
     ascending=False
 )
 
-ranking.columns = [
-    "Fund Name",
-    "Return %",
-    "Sharpe Ratio"
+st.bar_chart(
+    chart_df.set_index(
+        "scheme_name"
+    )["return_pct"]
+)
+
+# -----------------------------------
+# SHARPE CHART
+# -----------------------------------
+
+st.markdown("---")
+
+st.subheader("📊 Sharpe Ratio Comparison")
+
+sharpe_df = df.dropna(
+    subset=["sharpe_ratio"]
+)
+
+st.bar_chart(
+    sharpe_df.set_index(
+        "scheme_name"
+    )["sharpe_ratio"]
+)
+
+# -----------------------------------
+# RISK TABLE
+# -----------------------------------
+
+st.markdown("---")
+
+st.subheader("⚠ Risk Analysis")
+
+risk_df = df[
+    [
+        "scheme_name",
+        "volatility",
+        "sharpe_ratio"
+    ]
 ]
 
 st.dataframe(
-    ranking,
+    risk_df,
     use_container_width=True
 )
 
-st.divider()
-
-# ------------------------
+# -----------------------------------
 # FOOTER
-# ------------------------
+# -----------------------------------
+st.markdown("---")
 
-st.markdown("""
----
-### Mutual Fund Analytics Capstone Project
+st.markdown(
+"""
+© 2026 Ashutosh Raj
 
-Built using:
-- Python
-- Pandas
-- SQLite
-- Streamlit
-- mfapi.in
-
-Author: Ashutosh Raj
-""")
+Bluestock Mutual Fund Analytics Capstone Project
+"""
+)

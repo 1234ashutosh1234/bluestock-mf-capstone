@@ -2,12 +2,6 @@
 
 ## Overview
 
-This project is a complete Mutual Fund Analytics System developed as part of the Bluestock Fintech Capstone Project.
-
-The project fetches real NAV data from mfapi.in, processes and stores it in SQLite, performs financial analytics, and visualizes insights using Streamlit.
-
----
-
 ## Dashboard Preview
 
 ![Dashboard](reports/screenshots/dashboard.png)
@@ -24,6 +18,27 @@ The project fetches real NAV data from mfapi.in, processes and stores it in SQLi
 - Interactive Streamlit Dashboard
 - Performance Visualization
 
----
+## Technology Stack
+
+- Python
+- Pandas
+- SQLite
+- Streamlit
+- Matplotlib
+- MFAPI
 
 ## Project Structure
+
+## How To Run
+
+### Install Dependencies
+
+pip install -r requirements.txt
+
+### Run Dashboard
+
+streamlit run dashboard/app.py
+
+## Author
+
+Ashutosh Raj

@@ -2,9 +2,18 @@
 
 ## Overview
 
+
 ## Dashboard Preview
 
-![Dashboard](reports/screenshots/dashboard.png)
+![Dashboard Preview](dashboard/dashboard.png)
+
+### Live Dashboard Features
+
+- Fund Performance Analysis
+- Return Comparison
+- Sharpe Ratio Analysis
+- Risk Analysis
+- Real MFAPI Data Integration
 
 ## Features
 

@@ -5,7 +5,9 @@
 
 ## Dashboard Preview
 
-![Dashboard Preview](dashboard/dashboard.png)
+## Dashboard Preview
+
+![Dashboard](dashboard/dashboard.png)
 
 ### Live Dashboard Features
 

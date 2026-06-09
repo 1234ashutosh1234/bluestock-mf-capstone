@@ -7,7 +7,7 @@
 
 ## Dashboard Preview
 
-![Dashboard](dashboard/dashboard.png)
+![Dashboard](https://raw.githubusercontent.com/1234ashutosh1234/bluestock-mf-capstone/main/dashboard/dashboard.png)
 
 ### Live Dashboard Features
 

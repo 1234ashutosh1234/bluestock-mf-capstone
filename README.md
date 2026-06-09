@@ -54,6 +54,46 @@ Automated email generation and delivery of mutual fund reports.
 - Matplotlib
 - MFAPI
 
+## Scripts Overview
+
+### ETL
+
+* data_ingestion.py
+* live_nav_fetch.py
+
+### Database
+
+* create_database.py
+* sql_analysis.py
+
+### Analytics
+
+* fund_performance.py
+* risk_analysis.py
+* cagr_analysis.py
+* alpha_beta.py
+* sortino_ratio.py
+* max_drawdown.py
+* fund_scorecard.py
+
+### Visualization
+
+* nav_trend.py
+* correlation_matrix.py
+
+### Dashboard
+
+* dashboard_summary.py
+* enrich_dashboard.py
+
+### Bonus Challenges
+
+* auto_etl.py
+* monte_carlo.py
+* portfolio_optimizer.py
+* email_report.py
+
+
 ## Project Structure
 
 ## How To Run

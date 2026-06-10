@@ -84,6 +84,15 @@ Sharpe Ratio:
 
 ---
 
+## Limitations
+
+The provided NAV dataset contains only three trading days of historical data (01-Jan-2024 to 03-Jan-2024) for the selected mutual funds.
+
+Due to the limited time horizon, long-term performance metrics such as 1-Year, 3-Year, and 5-Year CAGR could not be calculated accurately. Therefore, short-period return calculations and annualized estimates were used where applicable.
+
+If a multi-year NAV dataset is available, the project can be extended to compute true long-term CAGR, rolling returns, advanced risk metrics, and more comprehensive performance analytics.
+
+
 ## Dashboard
 
 A Streamlit dashboard was developed to visualize:

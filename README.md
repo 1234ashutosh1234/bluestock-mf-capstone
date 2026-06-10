@@ -1,22 +1,22 @@
 # Mutual Fund Analytics Capstone Project
 
 ## Overview
+
 ## 📂 Project Resources
 
-[![Source Code](https://drive.google.com/drive/folders/14oFpTSpz_GBZkv6YWt9Pn165t2Cl0Bb_?usp=drive_link)](https://github.com/1234ashutosh1234/bluestock-mf-capstone)
+[![Source Code](https://img.shields.io/badge/Source%20Code-GitHub-blue)](https://github.com/1234ashutosh1234/bluestock-mf-capstone)
 
-[![Datasets](https://drive.google.com/drive/folders/13iZHSjm7H1vCpN3B8zAB4bqRGj51O9w5?usp=drive_link)](PASTE_DATASET_FOLDER_LINK)
+[![Datasets](https://img.shields.io/badge/Datasets-Google%20Drive-green)](https://drive.google.com/drive/folders/13iZHSjm7H1vCpN3B8zAB4bqRGj5109w5?usp=drive_link)
 
-[![Documentation](https://drive.google.com/drive/folders/1InESRrD7woPMrbI_kTpErgK3iqM1mA4p?usp=drive_link)](PASTE_DOCUMENTATION_FOLDER_LINK)
+[![Documentation](https://img.shields.io/badge/Documentation-Google%20Drive-orange)](https://drive.google.com/drive/folders/1InESRrD7woPMrbI_kTpErgK3iqM1mA4p?usp=drive_link)
 
-[![PPT%20Slides](https://drive.google.com/drive/folders/1TyfAUtlAbOtUlAt9xsr6rdKuM71LH4WV?usp=drive_link)](PASTE_PPT_LINK)
+[![PPT Slides](https://img.shields.io/badge/PPT%20Slides-Google%20Drive-purple)](https://drive.google.com/drive/folders/1TyfAUtlAbOtUlAt9xsr6rdKuM71LH4WV?usp=drive_link)
 
-[![Demo%20Video](https://drive.google.com/drive/folders/1gC8kzzkrs_uzjhgPcdc-8ayYm9GsJJOC?usp=drive_link)](PASTE_VIDEO_LINK)
-
+[![Demo Video](https://img.shields.io/badge/Demo%20Video-Google%20Drive-red)](https://drive.google.com/drive/folders/1gC8kzzkrs_uzjhgPcdc-8ayYm9GsJJOC?usp=drive_link)
 
 ## Dashboard Preview
 
-![Dashboard]![Dashboard](dashboard/dashboard.png)
+![Dashboard](dashboard/dashboard.png)
 
 ### Live Dashboard Features
 

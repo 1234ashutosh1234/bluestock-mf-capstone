@@ -104,6 +104,41 @@ Automated email generation and delivery of mutual fund reports.
 * portfolio_optimizer.py
 * email_report.py
 
+## Limitations & Assumptions
+
+### Dataset Limitation
+
+The NAV dataset provided for this project contains only a limited number of trading days for the selected mutual funds. As a result, long-term performance metrics such as 1-Year, 3-Year, and 5-Year CAGR could not be calculated using actual historical data.
+
+### Analytical Assumptions
+
+* Daily returns were calculated using available NAV observations.
+* Risk metrics such as Sharpe Ratio, Sortino Ratio, Alpha-Beta, and Maximum Drawdown were computed using the provided dataset.
+* CAGR values are demonstrated using the available NAV history and should not be interpreted as actual long-term mutual fund performance.
+
+### Future Enhancements
+
+* Integrate multi-year NAV history (2022–2025 or later).
+* Compute true 1Y, 3Y, and 5Y CAGR metrics.
+* Add rolling return analysis.
+* Add benchmark tracking error analysis.
+* Expand dashboard with additional fund comparison features.
+* Deploy the dashboard to Streamlit Cloud or Render.
+
+### Project Status
+
+✅ Data Ingestion & ETL
+✅ Data Cleaning & Processing
+✅ SQLite Database Integration
+✅ Exploratory Data Analysis (EDA)
+✅ Fund Performance Analytics
+✅ Risk Analytics
+✅ Interactive Streamlit Dashboard
+✅ Dashboard PDF & Screenshots
+✅ Documentation & Final Report
+✅ Bonus Challenges (Auto ETL, Monte Carlo Simulation, Portfolio Optimization, Email Reporting)
+
+
 
 ## Project Structure
 

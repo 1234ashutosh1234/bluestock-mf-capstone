@@ -1,6 +1,17 @@
 # Mutual Fund Analytics Capstone Project
 
 ## Overview
+## 📂 Project Resources
+
+[![Source Code](https://drive.google.com/drive/folders/14oFpTSpz_GBZkv6YWt9Pn165t2Cl0Bb_?usp=drive_link)](https://github.com/1234ashutosh1234/bluestock-mf-capstone)
+
+[![Datasets](https://drive.google.com/drive/folders/13iZHSjm7H1vCpN3B8zAB4bqRGj51O9w5?usp=drive_link)](PASTE_DATASET_FOLDER_LINK)
+
+[![Documentation](https://drive.google.com/drive/folders/1InESRrD7woPMrbI_kTpErgK3iqM1mA4p?usp=drive_link)](PASTE_DOCUMENTATION_FOLDER_LINK)
+
+[![PPT%20Slides](https://drive.google.com/drive/folders/1TyfAUtlAbOtUlAt9xsr6rdKuM71LH4WV?usp=drive_link)](PASTE_PPT_LINK)
+
+[![Demo%20Video](https://drive.google.com/drive/folders/1gC8kzzkrs_uzjhgPcdc-8ayYm9GsJJOC?usp=drive_link)](PASTE_VIDEO_LINK)
 
 
 ## Dashboard Preview

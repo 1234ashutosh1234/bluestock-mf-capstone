@@ -1,38 +1,56 @@
 import pandas as pd
-from pathlib import Path
 
-folder = Path("data/raw/live_nav")
+# Load raw NAV data
+df = pd.read_csv("data/raw/02_nav_history.csv")
 
-all_data = []
+# Convert date column
+df["date"] = pd.to_datetime(df["date"])
 
-fund_codes = {
-    "HDFC_Top100_NAV.csv": "125497",
-    "SBI_Bluechip.csv": "119551",
-    "ICICI_Bluechip.csv": "120503",
-    "Nippon_LargeCap.csv": "118632",
-    "Kotak_Bluechip.csv": "120841"
-}
+processed = []
 
-for file in folder.glob("*.csv"):
+for code in df["amfi_code"].unique():
 
-    print("Reading:", file.name)
+    temp = df[df["amfi_code"] == code].copy()
 
-    if file.name not in fund_codes:
-        print("Skipping:", file.name)
-        continue
+    temp = temp.sort_values("date")
 
-    df = pd.read_csv(file)
+    # Create complete date range
+    full_dates = pd.date_range(
+        start=temp["date"].min(),
+        end=temp["date"].max(),
+        freq="D"
+    )
 
-    df["amfi_code"] = fund_codes[file.name]
+    temp = (
+        temp.set_index("date")
+        .reindex(full_dates)
+    )
 
-    all_data.append(df[["amfi_code", "date", "nav"]])
+    temp["amfi_code"] = code
 
-merged = pd.concat(all_data, ignore_index=True)
+    # Fill weekends/holidays
+    temp["nav"] = temp["nav"].ffill()
 
-merged.to_csv(
-    "data/raw/02_nav_history_real.csv",
+    temp = temp.reset_index()
+
+    temp.rename(
+        columns={"index": "date"},
+        inplace=True
+    )
+
+    processed.append(temp)
+
+final_df = pd.concat(processed)
+
+# Daily return calculation
+final_df["daily_return"] = (
+    final_df.groupby("amfi_code")["nav"]
+    .pct_change()
+)
+
+final_df.to_csv(
+    "data/processed/nav_history_processed.csv",
     index=False
 )
 
-print("Merged Shape:", merged.shape)
-print("File Saved Successfully")
+print("Processed NAV file saved.")

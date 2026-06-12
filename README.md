@@ -38,6 +38,26 @@
 - Interactive Streamlit Dashboard
 - Performance Visualization
 
+## Run Complete Project
+
+Execute the entire analytics pipeline:
+
+```bash
+python scripts/run_pipeline.py
+```
+
+This script runs:
+
+* Data Ingestion
+* Fund Performance Analysis
+* Risk Analysis
+* Fund Scorecard
+* CAGR Analysis
+* Alpha-Beta Analysis
+* Sortino Ratio Analysis
+* Max Drawdown Analysis
+
+
 
 ## Bonus Challenges Completed
 
